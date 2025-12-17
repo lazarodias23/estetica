@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lumina Aesthetics | Medicina & Estética Avançada</title>
+    <meta name="description" content="Clínica de estética avançada especializada em resultados naturais." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração Tailwind (Dark Luxury Theme) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              noir: {
+                50: '#f4f4f5',
+                100: '#e4e4e7',
+                200: '#d4d4d8',
+                300: '#a1a1aa',
+                400: '#71717a',
+                500: '#52525b',
+                600: '#3f3f46',
+                700: '#27272a',
+                800: '#18181b',
+                900: '#09090b', // Rich Black
+                950: '#000000', // True Black
+              },
+              luxe: {
+                100: '#fffbeb',
+                200: '#fef3c7',
+                300: '#fde68a', // Pale Gold
+                400: '#fcd34d', // Gold
+                500: '#fbbf24', // Rich Gold
+                600: '#d97706', // Dark Gold/Amber
+                700: '#b45309',
+                800: '#92400e',
+                900: '#78350f',
+              }
+            },
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+              serif: ['Cormorant Garamond', 'serif'],
+            },
+            backgroundImage: {
+              'gold-gradient': 'linear-gradient(to right, #fde68a, #d97706)',
+              'dark-gradient': 'linear-gradient(to bottom, #09090b, #18181b)',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Custom Styles (Tailwind Play CDN compatible) -->
+    <style type="text/tailwindcss">
+      /* Utilitários de Navegação */
+      .nav-link {
+          @apply text-[0.65rem] uppercase tracking-[0.2em] font-bold text-noir-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-0 after:h-px after:bg-luxe-400 after:transition-all after:duration-300 hover:after:w-full cursor-pointer;
+      }
+
+      .mobile-link {
+          @apply font-serif text-3xl text-white hover:text-luxe-400 transition-colors cursor-pointer;
+      }
+
+      /* Botões melhorados (Gold Gradient) */
+      .btn-primary {
+          @apply inline-flex items-center justify-center bg-gradient-to-r from-luxe-400 to-luxe-600 text-noir-950 px-8 py-4 transition-all duration-300 font-sans tracking-[0.25em] text-[0.65rem] uppercase font-bold rounded-full border border-transparent hover:brightness-110 hover:shadow-xl hover:shadow-luxe-500/20 hover:-translate-y-0.5 active:translate-y-0 active:shadow-none cursor-pointer;
+      }
+
+      .btn-outline {
+          @apply inline-flex items-center justify-center bg-transparent text-white px-8 py-4 transition-all duration-300 font-sans tracking-[0.25em] text-[0.65rem] uppercase font-bold rounded-full border border-white/30 hover:border-luxe-400 hover:text-luxe-400 hover:shadow-xl hover:shadow-luxe-500/10 hover:-translate-y-0.5 active:translate-y-0 active:shadow-none cursor-pointer;
+      }
+
+      /* Cards (Dark Glass) */
+      .procedure-card {
+          @apply bg-noir-800/50 backdrop-blur-sm rounded-[2rem] overflow-hidden transition-all duration-500 ease-out border border-white/5 h-full flex flex-col hover:shadow-2xl hover:shadow-luxe-500/10 hover:border-luxe-500/30 hover:-translate-y-2;
+      }
+
+      .card-img {
+          @apply w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100;
+      }
+
+      /* Animação Fade In */
+      .fade-in-section {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 1s ease-out, transform 1s ease-out;
+          will-change: opacity, transform;
+      }
+
+      .fade-in-section.is-visible {
+          opacity: 1;
+          transform: none;
+      }
+
+      /* Texto Gradiente Dourado */
+      .text-gold-gradient {
+          @apply bg-clip-text text-transparent bg-gradient-to-r from-luxe-200 via-luxe-400 to-luxe-600;
+      }
+
+      /* Scrollbar Customizada (Dark) */
+      ::-webkit-scrollbar {
+          width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+          background: #09090b;
+      }
+      ::-webkit-scrollbar-thumb {
+          background: #3f3f46;
+          border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+          background: #fbbf24;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="antialiased text-noir-200 bg-noir-950 selection:bg-luxe-500 selection:text-noir-950">
+    
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 border-b border-transparent py-8">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center relative">
+        
+        <!-- Logo -->
+        <a href="#" class="flex flex-col items-center md:items-start group w-full md:w-auto z-10">
+          <span class="font-serif text-2xl md:text-3xl tracking-wide text-white font-medium group-hover:opacity-70 transition-opacity">
+            LUMINA
+          </span>
+          <span class="text-[0.55rem] font-sans tracking-[0.35em] text-luxe-400 uppercase mt-0.5 ml-0.5">
+            Aesthetics
+          </span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-10 items-center">
+          <a href="#sobre" class="nav-link">Sobre</a>
+          <a href="#medica" class="nav-link">Especialista</a>
+          <a href="#procedimentos" class="nav-link">Procedimentos</a>
+          <a href="#depoimentos" class="nav-link">Depoimentos</a>
+          <a href="#contato" class="btn-primary">Agendar</a>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none p-2 absolute right-6 top-1/2 -translate-y-1/2 z-20">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full bg-noir-950/95 backdrop-blur-xl border-t border-white/10 py-24 px-6 shadow-2xl h-screen flex flex-col items-center justify-center space-y-8 -z-10 transition-all duration-300">
+          <a href="#sobre" class="mobile-link">Sobre</a>
+          <a href="#medica" class="mobile-link">Especialista</a>
+          <a href="#procedimentos" class="mobile-link">Procedimentos</a>
+          <a href="#depoimentos" class="mobile-link">Depoimentos</a>
+          <a href="#contato" class="btn-primary mt-8 mobile-link-btn">Agendar Avaliação</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-noir-950">
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-luxe-500/10 rounded-full blur-[100px] -z-10 translate-x-1/2 -translate-y-1/4"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-noir-800/80 rounded-full blur-[100px] -z-10 -translate-x-1/3 translate-y-1/3"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div class="order-2 md:order-1 space-y-10 text-center md:text-left z-10 fade-in-section">
+            <div class="inline-block mb-6 px-4 py-1.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm">
+                <span class="block text-luxe-300 uppercase tracking-[0.25em] text-[0.6rem] font-bold">
+                Medicina & Estética Integrada
+                </span>
+            </div>
+            
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.05] text-white mb-8 -tracking-[0.02em]">
+              Beleza <span class="italic font-light text-gold-gradient">natural</span><br />
+              com precisão<br />
+              <span class="font-light text-noir-300">e cuidado.</span>
+            </h1>
+            
+            <p class="font-sans text-noir-400 font-light text-lg max-w-md mx-auto md:mx-0 leading-loose">
+              Descubra a sua melhor versão através de protocolos personalizados que unem ciência médica, arte e segurança.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center md:justify-start pt-8">
+              <a href="#contato" class="btn-primary">Agendar Avaliação</a>
+              <a href="#procedimentos" class="btn-outline">Conheça os Procedimentos</a>
+            </div>
+          </div>
+
+          <div class="order-1 md:order-2 relative h-[50vh] md:h-[80vh] w-full flex items-center justify-center fade-in-section">
+            <div class="relative h-full w-full overflow-hidden rounded-[2.5rem] md:rounded-tl-[12rem] md:rounded-br-[12rem] md:rounded-tr-[2.5rem] md:rounded-bl-[2.5rem] shadow-2xl shadow-black/50 border border-white/5">
+              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Estética Natural" class="object-cover w-full h-full opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-[1.5s] ease-out" />
+              <div class="absolute inset-0 bg-gradient-to-t from-noir-950 via-transparent to-transparent"></div>
+            </div>
+            <div class="absolute -bottom-8 -left-8 bg-noir-800/90 backdrop-blur-md p-6 rounded-2xl shadow-xl shadow-black/40 hidden md:block max-w-xs border border-white/10">
+                <p class="font-serif italic text-luxe-200 text-lg">"A arte de realçar o que já é belo."</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="sobre" class="py-32 bg-noir-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+            <div class="md:col-span-5 relative fade-in-section">
+              <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl shadow-black/50 border border-white/5">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Interior da Clínica" class="object-cover w-full h-full grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-1000 scale-105" />
+              </div>
+              <div class="absolute top-10 -left-10 w-full h-full border border-white/10 rounded-[3rem] -z-10 hidden md:block"></div>
+            </div>
+
+            <div class="md:col-span-7 space-y-10 md:pl-16 fade-in-section">
+              <span class="block text-luxe-500 uppercase tracking-[0.25em] text-[0.65rem] font-bold mb-6">Nossa Filosofia</span>
+              <h2 class="font-serif text-4xl md:text-5xl text-white leading-tight">
+                A harmonia entre <br/>ciência e <span class="italic font-light text-gold-gradient">arte</span>.
+              </h2>
+              <div class="space-y-6 text-noir-300 font-light leading-loose text-lg">
+                <p>Na Lumina Aesthetics, acreditamos que a verdadeira estética vai além da superfície. Trata-se de realçar a confiança, respeitando a essência de cada indivíduo.</p>
+                <p>Nossa clínica foi projetada para ser um refúgio de bem-estar, onde a tecnologia de ponta encontra o acolhimento humano.</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-16">
+                <div class="space-y-4 group">
+                  <div class="bg-noir-800 w-14 h-14 flex items-center justify-center rounded-2xl mb-2 border border-white/5 group-hover:bg-luxe-500 group-hover:text-noir-900 transition-all duration-500">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-luxe-400 group-hover:text-noir-900 transition-colors"></i>
+                  </div>
+                  <h3 class="font-serif text-lg text-white group-hover:text-luxe-300 transition-colors">Segurança Médica</h3>
+                  <p class="text-xs text-noir-500 leading-relaxed font-medium uppercase tracking-wide">Protocolos rigorosos e produtos de primeira linha.</p>
+                </div>
+                <div class="space-y-4 group">
+                  <div class="bg-noir-800 w-14 h-14 flex items-center justify-center rounded-2xl mb-2 border border-white/5 group-hover:bg-luxe-500 group-hover:text-noir-900 transition-all duration-500">
+                    <i data-lucide="sparkles" class="w-6 h-6 text-luxe-400 group-hover:text-noir-900 transition-colors"></i>
+                  </div>
+                  <h3 class="font-serif text-lg text-white group-hover:text-luxe-300 transition-colors">Resultados Naturais</h3>
+                  <p class="text-xs text-noir-500 leading-relaxed font-medium uppercase tracking-wide">Técnicas que respeitam sua anatomia.</p>
+                </div>
+                <div class="space-y-4 group">
+                  <div class="bg-noir-800 w-14 h-14 flex items-center justify-center rounded-2xl mb-2 border border-white/5 group-hover:bg-luxe-500 group-hover:text-noir-900 transition-all duration-500">
+                    <i data-lucide="heart" class="w-6 h-6 text-luxe-400 group-hover:text-noir-900 transition-colors"></i>
+                  </div>
+                  <h3 class="font-serif text-lg text-white group-hover:text-luxe-300 transition-colors">Atendimento Humanizado</h3>
+                  <p class="text-xs text-noir-500 leading-relaxed font-medium uppercase tracking-wide">Planos de tratamento exclusivos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Doctor Section -->
+      <section id="medica" class="py-24 bg-noir-800 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+            <div class="w-full md:w-1/2 order-2 md:order-1 fade-in-section">
+              <div class="space-y-6">
+                <h3 class="uppercase tracking-[0.2em] text-xs text-luxe-500 font-semibold">Especialista</h3>
+                <h2 class="font-serif text-5xl text-white">Dra. Elisa Vivara</h2>
+                <p class="text-luxe-200 italic font-serif text-xl opacity-80">CRM/SP 123.456 | Dermatologia Estética</p>
+                <div class="h-px w-24 bg-luxe-600/50 my-6"></div>
+                <div class="font-sans text-noir-300 font-light leading-relaxed space-y-4">
+                  <p>Com mais de 10 anos de experiência em medicina estética, Dra. Elisa é referência em rejuvenescimento facial natural. Graduada pela USP e com especialização em Harmonização Facial em Paris.</p>
+                  <p>"Minha filosofia é que o melhor procedimento é aquele que ninguém nota que foi feito, mas todo mundo percebe que você está mais bonita e descansada."</p>
+                </div>
+                <div class="pt-6">
+                  <h4 class="font-serif text-xl text-luxe-300 mb-4">Trajetória e Formação</h4>
+                  <ul class="space-y-2 text-sm text-noir-400">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-luxe-500"></span>Graduação em Medicina pela USP</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-luxe-500"></span>Residência em Dermatologia</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-luxe-500"></span>Fellow em Cosmiatria Avançada</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 order-1 md:order-2 fade-in-section">
+              <div class="relative">
+                <div class="absolute top-4 left-4 w-full h-full border border-white/10 z-0"></div>
+                <div class="relative z-10 aspect-[4/5] overflow-hidden bg-noir-900 border border-white/5">
+                  <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Dra. Elisa Vivara" class="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-500" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Procedures Section -->
+      <section id="procedimentos" class="py-32 bg-noir-950">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8 fade-in-section">
+            <div class="max-w-2xl">
+              <span class="block text-luxe-500 uppercase tracking-[0.25em] text-[0.65rem] font-bold mb-6">Nossos Tratamentos</span>
+              <h2 class="font-serif text-5xl md:text-6xl text-white leading-tight">Procedimentos de <br/><span class="italic text-gold-gradient">Alta Performance</span></h2>
+            </div>
+            <p class="hidden md:block font-sans text-noir-400 font-light max-w-xs text-right leading-relaxed">Protocolos personalizados para realçar sua beleza natural com segurança e tecnologia.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Cards (Example) -->
+            <div class="procedure-card fade-in-section group">
+              <div class="relative h-72 overflow-hidden rounded-[2rem] m-2">
+                <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Botox" />
+                <div class="absolute inset-0 bg-gradient-to-t from-noir-950/80 to-transparent"></div>
+                <div class="absolute top-4 right-4 w-10 h-10 bg-black/60 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-white/10">
+                  <i data-lucide="arrow-up-right" class="w-4 h-4 text-luxe-400"></i>
+                </div>
+              </div>
+              <div class="p-8 flex flex-col flex-grow">
+                <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-luxe-400 transition-colors">Toxina Botulínica</h3>
+                <p class="text-noir-400 font-light text-sm mb-6 leading-relaxed">Suavize rugas de expressão e previna sinais de envelhecimento.</p>
+              </div>
+            </div>
+
+            <div class="procedure-card fade-in-section group">
+                <div class="relative h-72 overflow-hidden rounded-[2rem] m-2">
+                  <img src="https://images.unsplash.com/photo-1588510904409-47e2f767540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Lábios" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-noir-950/80 to-transparent"></div>
+                  <div class="absolute top-4 right-4 w-10 h-10 bg-black/60 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-white/10">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-luxe-400"></i>
+                  </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                  <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-luxe-400 transition-colors">Preenchimento Labial</h3>
+                  <p class="text-noir-400 font-light text-sm mb-6 leading-relaxed">Volume, contorno e hidratação para lábios desenhados.</p>
+                </div>
+            </div>
+
+            <div class="procedure-card fade-in-section group">
+                <div class="relative h-72 overflow-hidden rounded-[2rem] m-2">
+                  <img src="https://images.unsplash.com/photo-1606907635678-75b871c4c8d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Harmonização" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-noir-950/80 to-transparent"></div>
+                  <div class="absolute top-4 right-4 w-10 h-10 bg-black/60 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-white/10">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-luxe-400"></i>
+                  </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                  <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-luxe-400 transition-colors">Harmonização Facial</h3>
+                  <p class="text-noir-400 font-light text-sm mb-6 leading-relaxed">Equilíbrio de proporções e realce da beleza.</p>
+                </div>
+            </div>
+
+            <div class="procedure-card fade-in-section group">
+                <div class="relative h-72 overflow-hidden rounded-[2rem] m-2">
+                  <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Bioestimuladores" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-noir-950/80 to-transparent"></div>
+                  <div class="absolute top-4 right-4 w-10 h-10 bg-black/60 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-white/10">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-luxe-400"></i>
+                  </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                  <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-luxe-400 transition-colors">Bioestimuladores</h3>
+                  <p class="text-noir-400 font-light text-sm mb-6 leading-relaxed">Estímulo de colágeno para uma pele firme.</p>
+                </div>
+            </div>
+
+            <div class="procedure-card fade-in-section group">
+                <div class="relative h-72 overflow-hidden rounded-[2rem] m-2">
+                  <img src="https://images.unsplash.com/photo-1576426863848-c2185fc6e3c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Skinbooster" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-noir-950/80 to-transparent"></div>
+                  <div class="absolute top-4 right-4 w-10 h-10 bg-black/60 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-white/10">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-luxe-400"></i>
+                  </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                  <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-luxe-400 transition-colors">Skinbooster</h3>
+                  <p class="text-noir-400 font-light text-sm mb-6 leading-relaxed">Hidratação profunda para viço e brilho.</p>
+                </div>
+            </div>
+
+             <div class="procedure-card fade-in-section group">
+                <div class="relative h-72 overflow-hidden rounded-[2rem] m-2">
+                  <img src="https://images.unsplash.com/photo-1519699047748-68e1430dd3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Fios" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-noir-950/80 to-transparent"></div>
+                  <div class="absolute top-4 right-4 w-10 h-10 bg-black/60 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-white/10">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-luxe-400"></i>
+                  </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                  <h3 class="font-serif text-2xl text-white mb-3 group-hover:text-luxe-400 transition-colors">Fios de Sustentação</h3>
+                  <p class="text-noir-400 font-light text-sm mb-6 leading-relaxed">Efeito lifting imediato e reposicionamento.</p>
+                </div>
+            </div>
+
+          </div>
+          <div class="text-center mt-20">
+            <a href="#contato" class="btn-outline">Ver Menu Completo</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="depoimentos" class="py-32 bg-noir-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="text-center mb-24 fade-in-section">
+            <span class="block text-luxe-500 uppercase tracking-[0.25em] text-[0.65rem] font-bold mb-6">Depoimentos</span>
+            <h2 class="font-serif text-4xl md:text-5xl text-white">Histórias <span class="italic text-gold-gradient">Reais</span></h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-noir-800/50 backdrop-blur-sm p-12 rounded-[2.5rem] hover:shadow-2xl hover:shadow-luxe-500/5 transition-all duration-500 group border border-white/5 flex flex-col justify-between h-full hover:border-luxe-500/30 fade-in-section">
+              <div class="mb-8">
+                <div class="text-4xl text-luxe-500 font-serif mb-6 opacity-50">"</div>
+                <p class="font-serif text-noir-200 text-xl leading-relaxed">O resultado ficou incrivelmente natural. Eu tinha medo de ficar artificial, mas a Dra. Elisa entendeu exatamente o que eu queria.</p>
+              </div>
+              <div class="flex items-center gap-4 pt-8 border-t border-white/5">
+                <div class="w-10 h-10 rounded-full bg-noir-700 flex items-center justify-center font-serif text-luxe-400 text-sm border border-white/10">C</div>
+                <div>
+                  <h4 class="font-sans font-bold text-white uppercase tracking-widest text-[0.65rem]">Carolina M.</h4>
+                  <p class="text-[0.65rem] text-luxe-500 font-medium uppercase tracking-wider mt-1">Bioestimuladores</p>
+                </div>
+              </div>
+            </div>
+             <!-- Testimonial 2 -->
+             <div class="bg-noir-800/50 backdrop-blur-sm p-12 rounded-[2.5rem] hover:shadow-2xl hover:shadow-luxe-500/5 transition-all duration-500 group border border-white/5 flex flex-col justify-between h-full hover:border-luxe-500/30 fade-in-section">
+                <div class="mb-8">
+                  <div class="text-4xl text-luxe-500 font-serif mb-6 opacity-50">"</div>
+                  <p class="font-serif text-noir-200 text-xl leading-relaxed">Ambiente sofisticado e atendimento impecável. Senti confiança desde a primeira consulta. O Botox foi aplicado de forma sutil.</p>
+                </div>
+                <div class="flex items-center gap-4 pt-8 border-t border-white/5">
+                  <div class="w-10 h-10 rounded-full bg-noir-700 flex items-center justify-center font-serif text-luxe-400 text-sm border border-white/10">P</div>
+                  <div>
+                    <h4 class="font-sans font-bold text-white uppercase tracking-widest text-[0.65rem]">Patricia S.</h4>
+                    <p class="text-[0.65rem] text-luxe-500 font-medium uppercase tracking-wider mt-1">Toxina Botulínica</p>
+                  </div>
+                </div>
+              </div>
+               <!-- Testimonial 3 -->
+            <div class="bg-noir-800/50 backdrop-blur-sm p-12 rounded-[2.5rem] hover:shadow-2xl hover:shadow-luxe-500/5 transition-all duration-500 group border border-white/5 flex flex-col justify-between h-full hover:border-luxe-500/30 fade-in-section">
+                <div class="mb-8">
+                  <div class="text-4xl text-luxe-500 font-serif mb-6 opacity-50">"</div>
+                  <p class="font-serif text-noir-200 text-xl leading-relaxed">Fiz preenchimento labial e ficou perfeito. O cuidado da equipe no pós-procedimento faz toda a diferença.</p>
+                </div>
+                <div class="flex items-center gap-4 pt-8 border-t border-white/5">
+                  <div class="w-10 h-10 rounded-full bg-noir-700 flex items-center justify-center font-serif text-luxe-400 text-sm border border-white/10">F</div>
+                  <div>
+                    <h4 class="font-sans font-bold text-white uppercase tracking-widest text-[0.65rem]">Fernanda L.</h4>
+                    <p class="text-[0.65rem] text-luxe-500 font-medium uppercase tracking-wider mt-1">Preenchimento Labial</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contato" class="py-32 bg-noir-950 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-luxe-600/5 rounded-full blur-[120px] -z-10 translate-x-1/3"></div>
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-16">
+            <div class="fade-in-section">
+              <div class="bg-noir-900/80 backdrop-blur-xl p-10 md:p-16 rounded-[3rem] shadow-2xl shadow-black/50 border border-white/5 relative overflow-hidden">
+                <span class="text-luxe-500 uppercase tracking-[0.25em] text-[0.65rem] font-bold relative z-10">Agendamento</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-white mt-6 mb-8 leading-tight relative z-10">Inicie sua jornada <br/> de beleza</h2>
+                
+                <form id="contact-form" class="space-y-10 mt-12 relative z-10">
+                  <div class="group">
+                    <input type="text" id="name" required class="w-full bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-luxe-500 transition-colors font-serif text-xl text-white placeholder:text-noir-600 placeholder:font-sans placeholder:text-base" placeholder="Seu nome completo" />
+                  </div>
+                  <div class="group">
+                    <input type="tel" id="phone" required class="w-full bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-luxe-500 transition-colors font-serif text-xl text-white placeholder:text-noir-600 placeholder:font-sans placeholder:text-base" placeholder="Seu WhatsApp" />
+                  </div>
+                  <div class="group">
+                    <div class="relative">
+                      <select id="procedure" class="w-full bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-luxe-500 transition-colors font-serif text-xl text-white appearance-none cursor-pointer [&>option]:bg-noir-900 [&>option]:text-white">
+                        <option>Avaliação Geral</option>
+                        <option>Botox</option>
+                        <option>Preenchimento Labial</option>
+                        <option>Harmonização Facial</option>
+                        <option>Bioestimuladores</option>
+                        <option>Skinbooster</option>
+                      </select>
+                      <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-luxe-500">
+                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pt-8">
+                    <button type="submit" class="btn-primary w-full">Solicitar Agendamento</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="h-full flex flex-col justify-center space-y-12 pl-0 lg:pl-12 fade-in-section">
+              <div>
+                <h3 class="font-serif text-4xl text-white mb-8">Nossa Localização</h3>
+                <p class="font-sans text-noir-400 font-light leading-relaxed mb-12 text-lg">Localizada no coração dos Jardins, nossa clínica oferece um refúgio urbano de privacidade e sofisticação.</p>
+              </div>
+              <div class="space-y-8">
+                <div class="flex items-center gap-6 group cursor-pointer">
+                  <div class="w-12 h-12 rounded-full bg-noir-800 flex items-center justify-center group-hover:bg-luxe-500 group-hover:text-noir-950 transition-all duration-500 shadow-sm border border-white/10">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-luxe-500 group-hover:text-noir-950 transition-colors"></i>
+                  </div>
+                  <div>
+                    <p class="text-white font-medium text-xs uppercase tracking-widest">Endereço</p>
+                    <p class="text-noir-300 font-serif text-lg mt-1 group-hover:text-luxe-400 transition-colors">Av. Paulista, 1000 - Jardins</p>
+                    <a href="https://maps.google.com" target="_blank" class="text-xs text-luxe-500 uppercase tracking-widest mt-1 hover:underline block">Traçar Rota</a>
+                  </div>
+                </div>
+                <div class="flex items-center gap-6 group cursor-pointer">
+                  <div class="w-12 h-12 rounded-full bg-noir-800 flex items-center justify-center group-hover:bg-luxe-500 group-hover:text-noir-950 transition-all duration-500 shadow-sm border border-white/10">
+                    <i data-lucide="phone" class="w-5 h-5 text-luxe-500 group-hover:text-noir-950 transition-colors"></i>
+                  </div>
+                  <div>
+                    <p class="text-white font-medium text-xs uppercase tracking-widest">Contato</p>
+                    <p class="text-noir-300 font-serif text-lg mt-1 group-hover:text-luxe-400 transition-colors">(11) 99999-8888</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-6 group cursor-pointer">
+                  <div class="w-12 h-12 rounded-full bg-noir-800 flex items-center justify-center group-hover:bg-luxe-500 group-hover:text-noir-950 transition-all duration-500 shadow-sm border border-white/10">
+                    <i data-lucide="instagram" class="w-5 h-5 text-luxe-500 group-hover:text-noir-950 transition-colors"></i>
+                  </div>
+                  <div>
+                    <p class="text-white font-medium text-xs uppercase tracking-widest">Siga-nos</p>
+                    <p class="text-noir-300 font-serif text-lg mt-1 group-hover:text-luxe-400 transition-colors">@lumina.aesthetics</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full h-[400px] md:h-[500px] rounded-[3rem] overflow-hidden shadow-2xl shadow-black/50 border border-white/10 relative group fade-in-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197587029519!2d-46.65868662375836!3d-23.561343761592676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1709920000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border: 0; filter: invert(90%) hue-rotate(180deg) contrast(90%)" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="transition-all duration-700 ease-in-out opacity-70 group-hover:opacity-100" title="Mapa da Clínica Lumina"></iframe>
+            <div class="absolute top-6 left-6 md:top-10 md:left-10 bg-noir-900/90 backdrop-blur px-6 py-3 rounded-full shadow-lg pointer-events-none border border-white/10">
+                <span class="text-white font-serif font-bold text-sm tracking-wide">📍 Jardins, São Paulo</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-noir-400 py-16 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 border-b border-white/5 pb-12">
+          <div class="col-span-1 md:col-span-2">
+            <h2 class="font-serif text-2xl text-white mb-6 tracking-wide">LUMINA</h2>
+            <p class="text-sm font-light leading-relaxed max-w-sm text-noir-500">Clínica de estética avançada dedicada a realçar sua beleza natural com segurança, tecnologia de ponta e um olhar artístico refinado.</p>
+          </div>
+          <div>
+            <h3 class="text-white text-xs uppercase tracking-widest mb-6">Navegação</h3>
+            <ul class="space-y-4 text-sm font-light text-noir-500">
+              <li><a href="#sobre" class="hover:text-luxe-400 transition-colors">Sobre Nós</a></li>
+              <li><a href="#medica" class="hover:text-luxe-400 transition-colors">Dra. Elisa Vivara</a></li>
+              <li><a href="#procedimentos" class="hover:text-luxe-400 transition-colors">Procedimentos</a></li>
+              <li><a href="#contato" class="hover:text-luxe-400 transition-colors">Agendar</a></li>
+            </ul>
+          </div>
+          <div>
+             <h3 class="text-white text-xs uppercase tracking-widest mb-6">Social</h3>
+             <div class="flex space-x-4 text-noir-400">
+                <a href="#" class="hover:text-luxe-400 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-luxe-400 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-luxe-400 transition-colors"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+             </div>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center text-xs font-light space-y-4 md:space-y-0 text-noir-600">
+          <p>&copy; 2024 Lumina Aesthetics. Todos os direitos reservados.</p>
+          <div class="text-justify md:text-right max-w-lg">
+            <p>AVISO LEGAL: As imagens são meramente ilustrativas. Os resultados podem variar de acordo com a fisiologia e organismo de cada paciente.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

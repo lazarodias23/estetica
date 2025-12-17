@@ -1,0 +1,5 @@
+/* 
+ * As classes customizadas foram movidas para a tag <style type="text/tailwindcss"> 
+ * dentro do index.html. Isso é necessário para que o CDN do Tailwind (script)
+ * consiga processar as diretivas @apply corretamente sem um build step.
+ */

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Procedimentos | Lumina Aesthetics</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bronze: { 50: '#F9F7F5', 100: '#F0EBE6', 200: '#E0D6CD', 300: '#CBBDB0', 400: '#AA9685', 500: '#8C735F', 600: '#705948', 700: '#564235', 800: '#423329', 900: '#2E231C', 950: '#1A1410' },
+              gold: { 100: '#FBF6E9', 200: '#F5EBCF', 300: '#EAD8A7', 400: '#DEC07E', 500: '#C8A659', 600: '#A68641', 700: '#856830', 800: '#664E24', 900: '#4D3B1C' },
+              ivory: { 50: '#FDFCFB', 100: '#FAF8F5', 200: '#F5F0EB', 300: '#EBE5DE' }
+            },
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+              serif: ['Cormorant Garamond', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="antialiased text-bronze-900 bg-ivory-100 selection:bg-bronze-200 selection:text-bronze-900">
+    
+    <nav id="navbar" class="fixed w-full z-50 bg-ivory-100/80 backdrop-blur-xl border-b border-bronze-200/50 py-4">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+        <a href="index.html" class="flex flex-col items-start group">
+          <span class="font-serif text-2xl md:text-3xl tracking-wide text-bronze-900 font-medium">LUMINA</span>
+          <span class="text-[0.55rem] font-sans tracking-[0.35em] text-gold-600 uppercase mt-0.5 ml-0.5">Aesthetics</span>
+        </a>
+        <div class="hidden md:flex space-x-10 items-center">
+          <a href="index.html" class="nav-link">Voltar ao Início</a>
+          <a href="index.html#contato" class="btn-primary">Agendar</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-40 pb-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 fade-in-section">
+                <span class="block text-bronze-400 uppercase tracking-[0.25em] text-[0.65rem] font-bold mb-6">Menu Completo</span>
+                <h1 class="font-serif text-5xl md:text-6xl text-bronze-900">Nossos Procedimentos</h1>
+                <p class="mt-6 text-bronze-500 font-light max-w-2xl mx-auto">Tecnologia avançada e técnicas refinadas para resultados que preservam sua essência.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Item 1 -->
+                <div class="procedure-card fade-in-section">
+                    <div class="relative h-64 overflow-hidden rounded-[2rem] m-2">
+                        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Botox">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl text-bronze-900 mb-3">Toxina Botulínica</h3>
+                        <p class="text-bronze-500 font-light text-sm">Tratamento preventivo e corretivo para rugas de expressão.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="procedure-card fade-in-section">
+                    <div class="relative h-64 overflow-hidden rounded-[2rem] m-2">
+                        <img src="https://images.unsplash.com/photo-1588510904409-47e2f767540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Lábios">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl text-bronze-900 mb-3">Preenchimento Labial</h3>
+                        <p class="text-bronze-500 font-light text-sm">Escultura labial com ácido hialurônico premium.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="procedure-card fade-in-section">
+                    <div class="relative h-64 overflow-hidden rounded-[2rem] m-2">
+                        <img src="https://images.unsplash.com/photo-1606907635678-75b871c4c8d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Harmonização">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl text-bronze-900 mb-3">Harmonização Facial</h3>
+                        <p class="text-bronze-500 font-light text-sm">Alinhamento de proporções (mandíbula, mento, malar).</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="procedure-card fade-in-section">
+                    <div class="relative h-64 overflow-hidden rounded-[2rem] m-2">
+                        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Bioestimulador">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl text-bronze-900 mb-3">Bioestimuladores</h3>
+                        <p class="text-bronze-500 font-light text-sm">Sculptra e Radiesse para firmar a pele e tratar flacidez.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="procedure-card fade-in-section">
+                    <div class="relative h-64 overflow-hidden rounded-[2rem] m-2">
+                        <img src="https://images.unsplash.com/photo-1576426863848-c2185fc6e3c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Skinbooster">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl text-bronze-900 mb-3">Skinbooster</h3>
+                        <p class="text-bronze-500 font-light text-sm">Hidratação injetável profunda para o "Glow" natural.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="procedure-card fade-in-section">
+                    <div class="relative h-64 overflow-hidden rounded-[2rem] m-2">
+                        <img src="https://images.unsplash.com/photo-1519699047748-68e1430dd3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Fios">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl text-bronze-900 mb-3">Fios de Sustentação</h3>
+                        <p class="text-bronze-500 font-light text-sm">Lifting não cirúrgico com fios de PDO.</p>
+                    </div>
+                </div>
+
+                 <!-- Item 7 (New) -->
+                 <div class="procedure-card fade-in-section">
+                    <div class="relative h-64 overflow-hidden rounded-[2rem] m-2">
+                        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Peeling">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl text-bronze-900 mb-3">Peeling Químico</h3>
+                        <p class="text-bronze-500 font-light text-sm">Renovação celular para manchas e textura irregular.</p>
+                    </div>
+                </div>
+
+                 <!-- Item 8 (New) -->
+                 <div class="procedure-card fade-in-section">
+                    <div class="relative h-64 overflow-hidden rounded-[2rem] m-2">
+                        <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Microagulhamento">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl text-bronze-900 mb-3">Microagulhamento</h3>
+                        <p class="text-bronze-500 font-light text-sm">Estímulo de colágeno para cicatrizes de acne e poros.</p>
+                    </div>
+                </div>
+
+                 <!-- Item 9 (New) -->
+                 <div class="procedure-card fade-in-section">
+                    <div class="relative h-64 overflow-hidden rounded-[2rem] m-2">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img" alt="Laser">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl text-bronze-900 mb-3">Laser Lavieen</h3>
+                        <p class="text-bronze-500 font-light text-sm">Efeito BB Cream para uma pele uniforme e radiante.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-bronze-950 text-bronze-300 py-12 text-center">
+        <p class="text-xs font-light text-bronze-500">&copy; 2024 Lumina Aesthetics. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+  </body>
+</html>
